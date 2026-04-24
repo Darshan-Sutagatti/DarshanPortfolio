@@ -63,4 +63,9 @@ window.addEventListener('scroll',()=>{
 },{ passive:true });
 
 /* ── DOWNLOAD ── */
-function dlResume(e){e.preventDefault();const t=`DARSHAN SUTAGATTI\nsutagattidarshan2135@gmail.com | +91 9741645875 | Bailhongal, Karnataka\nlinkedin.com/in/darshan-sutagatti-201108269\nYouTube: @dasharides | Instagram: @darshan_sutagatti_\n\nOBJECTIVE\nSoftware Developer & Full Stack Engineer — building elegant, functional software.\nOpen to software engineering roles and internships.\n\nINTERNSHIP\nFull Stack Development Intern | JSpiders, Rajajinagar, Bengaluru | Currently Active\n\nSKILLS\nLanguages: Java, C, Embedded C\nWeb: HTML5, CSS3\nDatabase: SQL\nIoT/Hardware: ESP8266, Realtek AMB82, IoT Sensors\nTools: GitHub, Blynk App, Claude AI\nSoft Skills: Logical Thinking, Team Collaboration, Problem Solving\n\nPROJECTS\n1. IoT Crowd Management & Emergency Alert System\n   Tech: Realtek AMB82, ESP8266, IoT Sensors, Embedded C\n   - Real-time crowd density monitoring with Wi-Fi streaming\n   - Automated emergency alerts on threshold breach\n   - Remote wireless monitoring dashboard\n\n2. Digital Car Parking System using Blynk\n   Tech: ESP8266, Blynk App, IoT Sensors\n   - Live parking slot availability monitor\n   - Blynk mobile app dashboard\n   - Scalable IoT architecture\n\nEDUCATION\nB.E Electronics & Communication | Jain College of Engineering, Belagavi | CGPA 8.8 | 2026\nPUC Science | KRCES'S GGD, Bailhongal | 94.5% | 2022\nSSLC | Carmel Vidya Vikas, Bailhongal | 91.84% | 2020`;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain'}));a.download='Darshan_Sutagatti_Resume.txt';a.click();}
+function dlResume(e){
+  e.preventDefault();
+
+  // Change file name if needed
+  window.open("Darshan_Sutagatti_Resume.pdf", "_blank");
+}
