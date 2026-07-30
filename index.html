@@ -1,379 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Darshan Sutagatti — Software Developer</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabinet+Grotesk:wght@300;400;500;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Darshan Sutagatti — Java Full Stack Developer</title>
+<meta name="description" content="Darshan Sutagatti – Java Full Stack Developer & Spring Boot Developer. Building secure, scalable backend systems with Java, Spring Boot, Spring Security, Hibernate, and MySQL."/>
+<meta name="keywords" content="Darshan Sutagatti, Java Full Stack Developer, Spring Boot, Spring Security, JWT, Hibernate, MySQL, ECE, Jain College of Engineering, Belagavi"/>
+<meta property="og:title" content="Darshan Sutagatti — Java Full Stack Developer"/>
+<meta property="og:description" content="Building scalable applications and turning ideas into reality through code."/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="cur-trail"></div>
-<div id="cur-ring"></div>
-<div id="cur-dot"></div>
-<canvas id="bgc"></canvas>
-<div class="hover-detail" id="hdetail"></div>
+<!-- Canvas -->
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-<!-- NAV -->
+<!-- Mobile overlay -->
+<div class="mob-overlay" id="mob">
+  <button class="mob-close" id="mob-close" aria-label="Close">✕</button>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#skills" onclick="closeMob()">Skills</a>
+  <a href="#experience" onclick="closeMob()">Experience</a>
+  <a href="#projects" onclick="closeMob()">Projects</a>
+  <a href="#education" onclick="closeMob()">Education</a>
+  <a href="#hobbies" onclick="closeMob()">Beyond Code</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+  <a href="Darshan_Sutagatti_Resume.pdf" download onclick="closeMob()">Resume ⬇</a>
+</div>
+
+<!-- Nav -->
 <nav>
-  <div class="nav-logo">D<span>S</span></div>
-  <ul class="nav-menu">
-    <li><a href="#about" data-num="01">About</a></li>
-    <li><a href="#skills" data-num="02">Skills</a></li>
-    <li><a href="#projects" data-num="03">Projects</a></li>
-    <li><a href="#internship" data-num="04">Experience</a></li>
-    <li><a href="#education" data-num="05">Education</a></li>
-    <li><a href="#contact" data-num="06">Contact</a></li>
+  <div class="nav-logo">&lt;<em>DS</em> /&gt;</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#hobbies">Beyond Code</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#" class="nav-cta" onclick="dlResume(event)">Resume ↓</a>
+  <div class="nav-right">
+    <a href="Darshan_Sutagatti_Resume.pdf" download class="btn-hire">Resume ⬇</a>
+    <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-overline">
-    <div class="status-dot"></div>
-    <span>Open to Software Roles · 2026 Graduate</span>
-  </div>
+<!-- Side rail -->
+<div class="side-rail" aria-label="Social links">
+  <div class="side-line"></div>
+  <a href="https://linkedin.com/in/darshan-sutagatti-201108269" target="_blank" rel="noopener" title="LinkedIn">in</a>
+  <a href="https://github.com/Darshan-Sutagatti" target="_blank" rel="noopener" title="GitHub">gh</a>
+  <div class="side-line"></div>
+</div>
 
-  <h1 class="hero-name">
-    <span class="n1">Darshan</span>
-    <span class="n2" data-text="Sutagatti">Sutagatti</span>
-  </h1>
-
-  <p class="hero-tagline">
-    <strong>Software Developer & Full Stack Engineer</strong> — building elegant,
-    functional software from frontend to embedded systems. ECE student at JCE, Belagavi.
-  </p>
-
-  <div class="hero-chips">
-    <div class="chip" data-hover="Java · C · HTML · CSS · SQL"><span>💻 Full Stack Dev</span></div>
-    <div class="chip" data-hover="ESP8266 · AMB82 · Embedded C"><span>⚡ IoT Systems</span></div>
-    <div class="chip" data-hover="Git · GitHub · Claude AI · Blynk"><span>🛠 Dev Tools</span></div>
-    <div class="chip" data-hover="CGPA 8.8 · JCE Belagavi · 2026"><span>🎓 B.E ECE</span></div>
-    <div class="chip" data-hover="JSpiders Rajajinagar · Active"><span>🚀 Interning</span></div>
-  </div>
-
-  <div class="hero-actions">
-    <a href="#projects" class="btn-main">View My Work →</a>
-    <a href="#contact" class="btn-ghost">Get In Touch</a>
-  </div>
-
-  <!-- floating stats -->
-  <div class="hero-stats">
-    <div class="stat-pill">
-      <span class="num" data-val="8.8">0</span>
-      <span class="lbl">CGPA</span>
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-wrap">
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span class="hero-dot"></span> Open to Opportunities · 2026</div>
+      <h1 class="hero-name">
+        <span class="first">Darshan</span>
+        <span class="last">Sutagatti</span>
+      </h1>
+      <div class="hero-role">// Java Full Stack Developer · Spring Boot Developer</div>
+      <div class="hero-type" id="typeEl"><span class="cur">|</span></div>
+      <p class="hero-desc">ECE graduate (9.0 CGPA) with enterprise-grade Java Full Stack training, building secure and scalable web applications with Spring Boot, Spring Security, Hibernate and MySQL — and using AI tools like GitHub Copilot and Claude to code faster and cleaner.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get In Touch →</a>
+        <a href="#projects" class="btn-ghost">View Projects</a>
+        <a href="Darshan_Sutagatti_Resume.pdf" download class="btn-ghost">Download Resume ⬇</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hstat-val">9.0</div><div class="hstat-lbl">CGPA / 10</div></div>
+        <div><div class="hstat-val">5+</div><div class="hstat-lbl">Months Internship</div></div>
+        <div><div class="hstat-val">15+</div><div class="hstat-lbl">Secured REST APIs</div></div>
+      </div>
     </div>
-    <div class="stat-pill">
-      <span class="num" data-val="94.5" data-sfx="%">0%</span>
-      <span class="lbl">PUC Score</span>
-    </div>
-    <div class="stat-pill">
-      <span class="num" data-val="2">0</span>
-      <span class="lbl">Projects</span>
-    </div>
-  </div>
 
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    <span>Scroll to explore</span>
+    <div class="hero-visual rv-r">
+      <div style="position:relative;width:100%;max-width:400px">
+        <div class="code-card">
+          <div class="code-top">
+            <div class="code-dot r"></div><div class="code-dot y"></div><div class="code-dot g"></div>
+            <div class="code-filename">Developer.java</div>
+          </div>
+          <div class="code-body">
+<span class="c-cm">// Darshan Sutagatti</span><br>
+<span class="c-an">@RestController</span><br>
+<span class="c-kw">public class</span> <span class="c-cn">Developer</span> {<br>
+&nbsp;&nbsp;<span class="c-kw">String</span> name <span class="c-tx">= </span><span class="c-st">"Darshan"</span>;<br>
+&nbsp;&nbsp;<span class="c-kw">double</span> cgpa <span class="c-tx">= </span><span class="c-nu">9.0</span>;<br>
+&nbsp;&nbsp;<span class="c-kw">String[]</span> stack <span class="c-tx">= {</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-st">"Spring Boot"</span>, <span class="c-st">"Spring Security"</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-st">"Hibernate"</span>, <span class="c-st">"MySQL"</span><br>
+&nbsp;&nbsp;<span class="c-tx">};</span><br><br>
+&nbsp;&nbsp;<span class="c-an">@GetMapping</span>(<span class="c-st">"/status"</span>)<br>
+&nbsp;&nbsp;<span class="c-fn">getOpportunities</span>() {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">return</span> <span class="c-st">"open"</span>;<br>
+&nbsp;&nbsp;}<br>
+}
+          </div>
+          <div class="code-footer">
+            <div class="code-status"><span class="status-dot"></span> Compiled · No errors</div>
+            <div class="code-lang">Java 21 · Spring Boot</div>
+          </div>
+        </div>
+
+        <div class="hero-badge b1"><span class="b-green">●</span> &nbsp;CGPA: 9.0 / 10</div>
+        <div class="hero-badge b2"><span class="b-accent">◆</span> &nbsp;Spring Boot Developer</div>
+        <div class="hero-badge b3"><span class="b-blue">▲</span> &nbsp;ECE Graduate 2026</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ══ ABOUT ══ -->
 <section id="about">
-  <div class="sec-label reveal">
-    <span class="sec-num">01 //</span>
-    <h2 class="sec-title">About Me</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="about-wrap">
-    <div class="about-body reveal-l">
-      <p>I'm a final-year <strong>Electronics & Communication Engineering</strong> student at Jain College of Engineering, Belagavi, graduating in 2026 with a <span class="hi">CGPA of 8.8</span>. My primary focus is <strong>software development</strong> — writing clean code, building real applications, and creating tools that solve genuine problems.</p>
-      <p>Currently interning in <strong>Full Stack Development at JSpiders, Rajajinagar</strong>, where I'm deepening my expertise in modern web technologies. I also bring a unique edge from my background in <span class="hi">IoT & embedded systems</span> — understanding both hardware and software gives me a perspective most developers don't have.</p>
-      <p>I believe great software is built by people who are <strong>curious, consistent, and collaborative</strong>. That's exactly how I approach every project — with logical thinking and a drive to keep improving.</p>
-    </div>
-    <div class="code-card reveal-r">
-      <div class="code-top">
-        <div class="cd cd-r"></div><div class="cd cd-y"></div><div class="cd cd-g"></div>
-        <span class="code-file">darshan.json</span>
+  <div class="container">
+    <div class="about-grid">
+      <div class="rv-l">
+        <div class="sec-eyebrow">Who I am</div>
+        <h2 class="sec-title">Engineer by degree,<br>Developer by choice.</h2>
+        <div class="sec-line"></div>
+        <div class="about-body">
+          <p>I'm a <strong>B.E. Electronics & Communication Engineering</strong> graduate from Jain College of Engineering, Belagavi — graduating in 2026 with a CGPA of <strong>9.0 / 10</strong>.</p>
+          <p>My path into software started during my internship at <strong>JSpiders, Rajajinagar</strong>, where I trained in Core Java, Advanced Java, Servlets, JSP, JDBC, Hibernate ORM and MySQL — and went on to build production-style applications with <strong>Spring Boot, Spring Security and JWT</strong>.</p>
+          <p>I'm big on AI-assisted development — using <strong>GitHub Copilot and Claude AI</strong> daily for debugging, code review and prompt engineering to write cleaner code, faster.</p>
+          <p>I'm actively seeking <strong>Software Engineer and Java Developer</strong> roles where I can contribute to real backend systems, learn fast, and ship meaningful features.</p>
+        </div>
+        <div class="about-tags">
+          <span class="atag">Java Backend</span>
+          <span class="atag">Spring Boot</span>
+          <span class="atag">Full Stack</span>
+          <span class="atag">Open to Work</span>
+          <span class="atag">Belagavi, Karnataka</span>
+          <span class="atag">2026 Graduate</span>
+        </div>
       </div>
-      <div class="code-body">
-        <span class="cl"><span class="cc">// Software Developer Profile</span></span>
-        <span class="cl">{</span>
-        <span class="cl">&nbsp;&nbsp;<span class="ck">"name"</span>: <span class="cv">"Darshan Sutagatti"</span>,</span>
-        <span class="cl">&nbsp;&nbsp;<span class="ck">"role"</span>: <span class="cv">"Full Stack Developer"</span>,</span>
-        <span class="cl">&nbsp;&nbsp;<span class="ck">"location"</span>: <span class="cv">"Bailhongal, KA"</span>,</span>
-        <span class="cl">&nbsp;&nbsp;<span class="ck">"cgpa"</span>: <span class="cn">8.8</span>,</span>
-        <span class="cl">&nbsp;&nbsp;<span class="ck">"batch"</span>: <span class="cn">2026</span>,</span>
-        <span class="cl">&nbsp;&nbsp;<span class="ck">"stack"</span>: [<span class="cv">"Java"</span>, <span class="cv">"C"</span>, <span class="cv">"HTML"</span>, <span class="cv">"SQL"</span>],</span>
-        <span class="cl">&nbsp;&nbsp;<span class="ck">"interning"</span>: <span class="cv">"JSpiders"</span>,</span>
-        <span class="cl">&nbsp;&nbsp;<span class="ck">"available"</span>: <span class="cg">true</span>,</span>
-        <span class="cl">&nbsp;&nbsp;<span class="ck">"phone"</span>: <span class="cv">"+91 9741645875"</span></span>
-        <span class="cl">} <span class="cursor-blink"></span></span>
+      <div class="rv-r">
+        <div class="about-right">
+          <div class="astat"><div class="astat-val">9.0</div><div class="astat-lbl">CGPA<br>Jain College of Engg.</div></div>
+          <div class="astat"><div class="astat-val">94.5%</div><div class="astat-lbl">PUC Score<br>Science Stream</div></div>
+          <div class="astat"><div class="astat-val">5+</div><div class="astat-lbl">Months Java<br>Internship</div></div>
+          <div class="astat"><div class="astat-val">12+</div><div class="astat-lbl">Tech Skills<br>& Frameworks</div></div>
+        </div>
+        <div class="timeline-mini" style="margin-top:1.5rem">
+          <div class="tm-item">
+            <div class="tm-icon" style="background:rgba(255,107,43,.1)">🎓</div>
+            <div class="tm-body"><div class="tm-title">B.E. ECE — Jain College of Engineering</div><div class="tm-sub">2022 – 2026 · Belagavi · CGPA 9.0</div></div>
+          </div>
+          <div class="tm-item">
+            <div class="tm-icon" style="background:rgba(79,142,247,.1)">💼</div>
+            <div class="tm-body"><div class="tm-title">Java Full Stack Intern — JSpiders</div><div class="tm-sub">Feb 2026 – Present · Rajajinagar, Bengaluru</div></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- ══ SKILLS ══ -->
 <section id="skills">
-  <div class="sec-label reveal">
-    <span class="sec-num">02 //</span>
-    <h2 class="sec-title">Skills & Stack</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="skills-wrap reveal">
-    <div class="skill-card primary"
-         data-hover-detail="Primary stack — actively used in internship and projects">
-      <span class="sk-icon">💻</span>
-      <div class="sk-cat">// Programming Languages</div>
-      <div class="sk-items">
-        <span class="sk-tag">Java</span>
-        <span class="sk-tag">C</span>
-        <span class="sk-tag">Embedded C</span>
+  <div class="container">
+    <div class="rv">
+      <div class="sec-eyebrow">What I work with</div>
+      <h2 class="sec-title">Technical Skills</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="skills-wrap">
+      <div class="skill-cat rv">
+        <div class="skill-cat-head">☕ Backend</div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">Core & Advanced Java</span><span class="sk-pct">90%</span></div><div class="sk-track"><div class="sk-bar" data-w="90" style="background:linear-gradient(90deg,#4f8ef7,#818cf8)"></div></div></div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">Spring Boot / Spring Security</span><span class="sk-pct">85%</span></div><div class="sk-track"><div class="sk-bar" data-w="85" style="background:linear-gradient(90deg,#4f8ef7,#818cf8)"></div></div></div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">REST APIs & JWT</span><span class="sk-pct">85%</span></div><div class="sk-track"><div class="sk-bar" data-w="85" style="background:linear-gradient(90deg,#4f8ef7,#818cf8)"></div></div></div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">Servlets, JSP & JDBC</span><span class="sk-pct">83%</span></div><div class="sk-track"><div class="sk-bar" data-w="83" style="background:linear-gradient(90deg,#4f8ef7,#818cf8)"></div></div></div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">Hibernate ORM / JPA</span><span class="sk-pct">80%</span></div><div class="sk-track"><div class="sk-bar" data-w="80" style="background:linear-gradient(90deg,#4f8ef7,#818cf8)"></div></div></div>
+      </div>
+      <div class="skill-cat rv">
+        <div class="skill-cat-head">⚡ Frontend</div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">HTML5 / CSS3</span><span class="sk-pct">88%</span></div><div class="sk-track"><div class="sk-bar" data-w="88" style="background:linear-gradient(90deg,#f97316,#fb923c)"></div></div></div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">JavaScript (ES6+)</span><span class="sk-pct">80%</span></div><div class="sk-track"><div class="sk-bar" data-w="80" style="background:linear-gradient(90deg,#f97316,#fb923c)"></div></div></div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">ReactJS</span><span class="sk-pct">70%</span></div><div class="sk-track"><div class="sk-bar" data-w="70" style="background:linear-gradient(90deg,#f97316,#fb923c)"></div></div></div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">AJAX & JSON</span><span class="sk-pct">78%</span></div><div class="sk-track"><div class="sk-bar" data-w="78" style="background:linear-gradient(90deg,#f97316,#fb923c)"></div></div></div>
+      </div>
+      <div class="skill-cat rv">
+        <div class="skill-cat-head">🗄 Database</div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">MySQL</span><span class="sk-pct">87%</span></div><div class="sk-track"><div class="sk-bar" data-w="87" style="background:linear-gradient(90deg,#22d3a0,#34d399)"></div></div></div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">Oracle SQL</span><span class="sk-pct">78%</span></div><div class="sk-track"><div class="sk-bar" data-w="78" style="background:linear-gradient(90deg,#22d3a0,#34d399)"></div></div></div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">CRUD, Joins & Normalization</span><span class="sk-pct">83%</span></div><div class="sk-track"><div class="sk-bar" data-w="83" style="background:linear-gradient(90deg,#22d3a0,#34d399)"></div></div></div>
+      </div>
+      <div class="skill-cat rv">
+        <div class="skill-cat-head">🛠 Tools & AI</div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">Git & GitHub</span><span class="sk-pct">85%</span></div><div class="sk-track"><div class="sk-bar" data-w="85" style="background:linear-gradient(90deg,#a78bfa,#c4b5fd)"></div></div></div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">Maven & Postman</span><span class="sk-pct">80%</span></div><div class="sk-track"><div class="sk-bar" data-w="80" style="background:linear-gradient(90deg,#a78bfa,#c4b5fd)"></div></div></div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">GitHub Copilot & Claude AI</span><span class="sk-pct">85%</span></div><div class="sk-track"><div class="sk-bar" data-w="85" style="background:linear-gradient(90deg,#a78bfa,#c4b5fd)"></div></div></div>
+        <div class="sk"><div class="sk-row"><span class="sk-name">Prompt Engineering</span><span class="sk-pct">78%</span></div><div class="sk-track"><div class="sk-bar" data-w="78" style="background:linear-gradient(90deg,#a78bfa,#c4b5fd)"></div></div></div>
       </div>
     </div>
-    <div class="skill-card primary"
-         data-hover-detail="Frontend skills — building responsive UIs">
-      <span class="sk-icon">🌐</span>
-      <div class="sk-cat">// Web Technologies</div>
-      <div class="sk-items">
-        <span class="sk-tag">HTML5</span>
-        <span class="sk-tag">CSS3</span>
-      </div>
-    </div>
-    <div class="skill-card"
-         data-hover-detail="Database skills — querying and managing structured data">
-      <span class="sk-icon">🗄️</span>
-      <div class="sk-cat">// Database</div>
-      <div class="sk-items">
-        <span class="sk-tag">SQL</span>
-      </div>
-    </div>
-    <div class="skill-card"
-         data-hover-detail="Hardware expertise — unique edge for software roles">
-      <span class="sk-icon">⚡</span>
-      <div class="sk-cat">// IoT & Hardware</div>
-      <div class="sk-items">
-        <span class="sk-tag">ESP8266</span>
-        <span class="sk-tag">Realtek AMB82</span>
-        <span class="sk-tag">IoT Sensors</span>
-      </div>
-    </div>
-    <div class="skill-card"
-         data-hover-detail="Tools used daily for version control and development">
-      <span class="sk-icon">🛠</span>
-      <div class="sk-cat">// Dev Tools</div>
-      <div class="sk-items">
-        <span class="sk-tag">GitHub</span>
-        <span class="sk-tag">Blynk</span>
-        <span class="sk-tag">Claude AI</span>
-      </div>
-    </div>
-    <div class="skill-card"
-         data-hover-detail="Soft skills that make me a great teammate">
-      <span class="sk-icon">🤝</span>
-      <div class="sk-cat">// Soft Skills</div>
-      <div class="sk-items">
-        <span class="sk-tag">Logical Thinking</span>
-        <span class="sk-tag">Collaboration</span>
-        <span class="sk-tag">Problem Solving</span>
+    <div style="margin-top:1.5rem" class="rv">
+      <div class="chip-wrap">
+        <span class="chip">Eclipse IDE</span>
+        <span class="chip">VS Code</span>
+        <span class="chip">Apache Tomcat</span>
+        <span class="chip">Agile Collaboration</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- ══ EXPERIENCE ══ -->
+<section id="experience">
+  <div class="container">
+    <div class="rv">
+      <div class="sec-eyebrow">Where I've worked</div>
+      <h2 class="sec-title">Experience</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="exp-outer rv">
+      <div class="exp-timeline" style="position:relative">
+        <div class="exp-dot"></div>
+        <div class="exp-yr">Feb 2026 – Present</div>
+        <div class="exp-co">JSpiders</div>
+        <div class="exp-loc">📍 Rajajinagar, Bengaluru</div>
+      </div>
+      <div class="exp-main">
+        <div class="exp-role">Java Full Stack Developer Intern</div>
+        <div class="exp-tags">
+          <span class="exp-tag">Java</span><span class="exp-tag">Servlets</span>
+          <span class="exp-tag">JSP</span><span class="exp-tag">JDBC</span>
+          <span class="exp-tag">Hibernate</span><span class="exp-tag">MySQL</span>
+          <span class="exp-tag">Git</span><span class="exp-tag">Copilot</span><span class="exp-tag">Claude AI</span>
+        </div>
+        <div class="exp-points">
+          <div class="exp-pt">Developed Java web applications using Core Java, Servlets, JSP and Hibernate, following MVC architecture end-to-end.</div>
+          <div class="exp-pt">Applied OOP principles to build modular, reusable backend components across multiple internal modules.</div>
+          <div class="exp-pt">Designed REST APIs and integrated MySQL databases using JDBC and Hibernate ORM.</div>
+          <div class="exp-pt">Used GitHub Copilot and Claude AI daily to accelerate debugging, refactoring and code reviews.</div>
+          <div class="exp-pt">Collaborated with frontend developers using HTML, CSS, JavaScript and Git inside Agile teams.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJECTS ══ -->
 <section id="projects">
-  <div class="sec-label reveal">
-    <span class="sec-num">03 //</span>
-    <h2 class="sec-title">Projects</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="projects-wrap">
-    <div class="proj-card reveal">
-      <div class="proj-card-top">
-        <div class="proj-num">01</div>
-        <div class="proj-badge">⚡ IoT · Embedded</div>
-        <div class="proj-title">IoT Crowd Management &amp; Emergency Alert System</div>
-        <div class="proj-stack">
-          <span class="proj-tag">Realtek AMB82</span>
-          <span class="proj-tag">ESP8266</span>
-          <span class="proj-tag">Embedded C</span>
-          <span class="proj-tag">IoT Sensors</span>
-          <span class="proj-tag">Wi-Fi</span>
-        </div>
-      </div>
-      <div class="proj-divider"></div>
-      <div class="proj-body">
-        <p class="proj-desc">A real-time IoT solution built to monitor crowd density, automate safety alerts, and enable remote management of crowded public spaces.</p>
-        <ul class="proj-points">
-          <li>Live crowd density monitoring using Realtek AMB82 + ESP8266 Wi-Fi module with real-time data streaming</li>
-          <li>Dual-sensor entry/exit counting system for precise occupancy tracking at any given moment</li>
-          <li>Automated emergency alert engine — fires notifications the instant density exceeds a configurable safety limit</li>
-          <li>Wireless remote monitoring dashboard — operators view crowd data without physical presence</li>
-          <li>Deployed in real-world scenarios: public events, railway stations, and crowded public spaces</li>
-        </ul>
-        <div class="proj-footer">
-          <span class="proj-impact">✓ Public safety impact</span>
-        </div>
-      </div>
+  <div class="container">
+    <div class="rv">
+      <div class="sec-eyebrow">What I've built</div>
+      <h2 class="sec-title">Projects</h2>
+      <div class="sec-line"></div>
     </div>
-
-    <div class="proj-card reveal">
-      <div class="proj-card-top">
-        <div class="proj-num">02</div>
-        <div class="proj-badge">📱 IoT · Mobile App</div>
-        <div class="proj-title">Digital Smart Parking System using Blynk</div>
-        <div class="proj-stack">
-          <span class="proj-tag">ESP8266</span>
-          <span class="proj-tag">Blynk App</span>
-          <span class="proj-tag">IoT Sensors</span>
-          <span class="proj-tag">Wi-Fi</span>
-          <span class="proj-tag">Cloud</span>
-        </div>
-      </div>
-      <div class="proj-divider"></div>
-      <div class="proj-body">
-        <p class="proj-desc">A connected smart parking system that eliminates manual slot checking using IoT sensors, real-time cloud sync, and a mobile app dashboard.</p>
-        <ul class="proj-points">
-          <li>Fully connected smart parking monitor using ESP8266 — tracks individual slot availability in real time, zero manual intervention</li>
-          <li>Blynk mobile app dashboard gives users instant live visibility into free vs. occupied slots from their phone</li>
-          <li>IoT proximity sensors at each bay detect vehicle presence and push updates to the cloud over Wi-Fi in seconds</li>
-          <li>Scalable architecture — extendable to multi-floor parking structures with minimal additional hardware</li>
+    <div class="proj-grid">
+      <div class="proj-card rv">
+        <div class="proj-n">01</div>
+        <div class="proj-ico">💼</div>
+        <div class="proj-meta">2026</div>
+        <h3 class="proj-title">Job Portal System</h3>
+        <p class="proj-desc">A full-stack job portal supporting both recruiters and job seekers, built on a layered MVC architecture with a normalized MySQL schema via Hibernate/JPA.</p>
+        <ul class="proj-list">
+          <li>Secured 15+ REST APIs using JWT authentication and role-based authorization.</li>
+          <li>Built recruiter job posting and applicant tracking flows.</li>
+          <li>Added job search with filters for title, location and skills.</li>
         </ul>
-        <div class="proj-footer">
-          <span class="proj-impact">✓ Scalable IoT architecture</span>
+        <div class="proj-stack">
+          <span class="ptech">Java</span><span class="ptech">Spring Boot</span><span class="ptech">Spring Security</span>
+          <span class="ptech">JWT</span><span class="ptech">Hibernate/JPA</span><span class="ptech">MySQL</span>
+          <span class="ptech">REST APIs</span>
         </div>
+        <a href="https://github.com/Darshan-Sutagatti/JOB_PORTAL_SYSTEM" target="_blank" rel="noopener noreferrer" class="proj-link" style="display:inline-flex;margin-top:.5rem">↗ View on GitHub</a>
+      </div>
+      <div class="proj-card rv">
+        <div class="proj-n">02</div>
+        <div class="proj-ico">🚨</div>
+        <div class="proj-meta">2025</div>
+        <h3 class="proj-title">IoT Crowd Management & Emergency Alert System</h3>
+        <p class="proj-desc">A real-time crowd monitoring system built using Realtek AMB82 and ESP8266, with YOLO-based detection to estimate crowd density from live video streams.</p>
+        <ul class="proj-list">
+          <li>Programmed embedded devices to transmit occupancy data over Wi-Fi and RTSP.</li>
+          <li>Built a responsive web dashboard for remote monitoring and emergency alerts.</li>
+          <li>Implemented threshold-based notifications for overcrowding situations.</li>
+        </ul>
+        <div class="proj-stack">
+          <span class="ptech">Realtek AMB82</span><span class="ptech">ESP8266</span>
+          <span class="ptech">YOLO</span><span class="ptech">Embedded C</span>
+          <span class="ptech">HTML5/CSS3/JS</span><span class="ptech">Wi-Fi</span><span class="ptech">RTSP</span>
+        </div>
+        <a href="https://github.com/Darshan-Sutagatti/Iot_Crowd_Management" target="_blank" rel="noopener noreferrer" class="proj-link" style="display:inline-flex;margin-top:.5rem">↗ View on GitHub</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- INTERNSHIP -->
-<section id="internship">
-  <div class="sec-label reveal">
-    <span class="sec-num">04 //</span>
-    <h2 class="sec-title">Experience</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="intern-wrap reveal">
-    <div class="intern-grid">
-      <div>
-        <div class="intern-role">Full Stack Development Intern</div>
-        <div class="intern-company">JSpiders — Rajajinagar, Bengaluru</div>
-      </div>
-      <div class="live-badge">
-        <div class="live-dot"></div>
-        Currently Active
-      </div>
-    </div>
-    <div class="intern-tags">
-      <span class="proj-tag" style="padding:5px 14px;font-size:.68rem;">Full Stack Development</span>
-      <span class="proj-tag" style="padding:5px 14px;font-size:.68rem;">Web Technologies</span>
-      <span class="proj-tag" style="padding:5px 14px;font-size:.68rem;">Software Engineering</span>
-      <span class="proj-tag" style="padding:5px 14px;font-size:.68rem;">Ongoing</span>
-    </div>
-    <p class="intern-body">Currently undergoing intensive Full Stack Development training at JSpiders, Rajajinagar — one of Bengaluru's leading tech training institutions. Deepening expertise in modern web development, data structures, and software engineering practices. Combining this with a strong foundation in Java, C, and problem-solving from my ECE degree to build production-ready applications.</p>
-  </div>
-</section>
-
-<!-- EDUCATION -->
+<!-- ══ EDUCATION ══ -->
 <section id="education">
-  <div class="sec-label reveal">
-    <span class="sec-num">05 //</span>
-    <h2 class="sec-title">Education</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="edu-wrap reveal">
-    <div class="edu-row">
-      <div class="edu-year">2022 — 2026</div>
-      <div>
-        <div class="edu-deg">B.E — Electronics &amp; Communication</div>
-        <div class="edu-inst">Jain College of Engineering, Belagavi</div>
-        <span class="edu-score">CGPA 8.8 &nbsp;·&nbsp; Pursuing</span>
-      </div>
+  <div class="container">
+    <div class="rv">
+      <div class="sec-eyebrow">Academic background</div>
+      <h2 class="sec-title">Education</h2>
+      <div class="sec-line"></div>
     </div>
-    <div class="edu-row">
-      <div class="edu-year">2020 — 2022</div>
-      <div>
-        <div class="edu-deg">Pre-University Course — Science</div>
-        <div class="edu-inst">KRCES'S GGD Arts, BMP Commerce &amp; SVS Science College, Bailhongal</div>
-        <span class="edu-score">94.5%</span>
+    <div class="edu-grid rv">
+      <div class="edu-item">
+        <div class="edu-yr">2022 – 2026</div>
+        <div>
+          <div class="edu-name">B.E. Electronics & Communication Engineering</div>
+          <div class="edu-school">Jain College of Engineering, Belagavi</div>
+        </div>
+        <div class="edu-score">9.0<span>CGPA / 10</span></div>
       </div>
-    </div>
-    <div class="edu-row">
-      <div class="edu-year">2020</div>
-      <div>
-        <div class="edu-deg">SSLC</div>
-        <div class="edu-inst">Carmel Vidya Vikas Higher Primary School, Bailhongal</div>
-        <span class="edu-score">91.84%</span>
+      <div class="edu-item">
+        <div class="edu-yr">2020 – 2022</div>
+        <div>
+          <div class="edu-name">PUC (Science)</div>
+          <div class="edu-school">KRCES's GGD Arts, BMP Commerce & SVS Science College</div>
+        </div>
+        <div class="edu-score">94.5%<span>Percentage</span></div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-yr">2020</div>
+        <div>
+          <div class="edu-name">SSLC</div>
+          <div class="edu-school">Carmel Vidya Vikas Higher Primary School</div>
+        </div>
+        <div class="edu-score">91.84%<span>Percentage</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOBBIES -->
-<section id="hobbies" style="background:var(--s1);">
-  <div class="sec-label reveal">
-    <span class="sec-num">06 //</span>
-    <h2 class="sec-title">Beyond Code</h2>
-    <div class="sec-line"></div>
-  </div>
-  <div class="hobbies-grid">
-    <div class="hob reveal">
-      <span class="hob-em">🏍️</span>
-      <div class="hob-name">Moto Vlogging</div>
-      <div class="hob-info">Documenting rides and road adventures on camera. Combining a love for motorcycles with content creation — building an audience one ride at a time.</div>
-      <a href="https://youtube.com/@dasharides" target="_blank" class="hob-link">YouTube: @dasharides</a>
-      <a href="https://instagram.com/darshan_sutagatti_" target="_blank" class="hob-link">Instagram: @darshan_sutagatti_</a>
+<!-- ══ SOFT SKILLS & ACHIEVEMENTS ══ -->
+<section id="strengths">
+  <div class="container">
+    <div class="rv">
+      <div class="sec-eyebrow">Beyond the tech stack</div>
+      <h2 class="sec-title">Soft Skills & Achievements</h2>
+      <div class="sec-line"></div>
     </div>
-    <div class="hob reveal">
-      <span class="hob-em">🔧</span>
-      <div class="hob-name">Bikes &amp; Mechanics</div>
-      <div class="hob-info">Deep passion for understanding how machines work — maintaining motorcycles, exploring engineering, and getting hands-on with hardware. It's where my love for building started.</div>
+    <div class="two-col">
+      <div class="info-card rv-l">
+        <h3>🧠 Soft Skills</h3>
+        <ul class="info-list">
+          <li>Strong analytical thinking and problem-solving skills.</li>
+          <li>Excellent debugging and troubleshooting abilities.</li>
+          <li>Effective communication and teamwork.</li>
+          <li>Quick learner with adaptability to new technologies.</li>
+        </ul>
+      </div>
+      <div class="info-card rv-r">
+        <h3>🏆 Achievements</h3>
+        <ul class="info-list ach">
+          <li>Academic excellence: 9.0 CGPA in B.E., 94.5% in PUC and 91.84% in SSLC.</li>
+          <li>Built full-stack Java applications using Spring Boot, Spring Security and Hibernate.</li>
+          <li>Leveraged GitHub Copilot and Claude AI to improve software development productivity.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ══ HOBBIES ══ -->
+<section id="hobbies">
+  <div class="container">
+    <div class="rv">
+      <div class="sec-eyebrow">Beyond Coding</div>
+      <h2 class="sec-title">Life Outside the Terminal</h2>
+      <p class="sec-sub">Software isn't the only thing I build. Here's what keeps me grounded, inspired, and thinking differently.</p>
+      <div class="sec-line"></div>
+    </div>
+    <div class="hobby-grid">
+      <div class="hobby-card rv">
+        <span class="hobby-emoji">🏍️</span>
+        <div class="hobby-title">Bike Riding</div>
+        <div class="hobby-badge">Passionate</div>
+        <p class="hobby-desc">Motorcycles are my reset button. Long rides through Karnataka's roads clear my mind and sharpen my focus — the same patience that makes a good rider makes a good debugger.</p>
+      </div>
+      <div class="hobby-card rv">
+        <span class="hobby-emoji">🎬</span>
+        <div class="hobby-title">Bike Videos</div>
+        <div class="hobby-badge">Content Creator</div>
+        <p class="hobby-desc">I film and edit bike riding videos — capturing the ride, the roads, and the machines. It's my way of storytelling through a different kind of lens.</p>
+      </div>
+      <div class="hobby-card rv">
+        <span class="hobby-emoji">📸</span>
+        <div class="hobby-title">Content Creation</div>
+        <div class="hobby-badge">In Progress</div>
+        <p class="hobby-desc">Building a presence around bikes and tech. Creating content has taught me to communicate clearly and think from the audience's perspective — directly useful in code documentation and team work.</p>
+      </div>
+      <div class="hobby-card rv">
+        <span class="hobby-emoji">🤖</span>
+        <div class="hobby-title">AI-Assisted Coding</div>
+        <div class="hobby-badge">Exploring</div>
+        <p class="hobby-desc">Outside work hours I experiment with GitHub Copilot and Claude AI on side projects — testing prompt patterns that speed up debugging and code review.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOCIAL ══ -->
+<section id="social">
+  <div class="container">
+    <div class="rv">
+      <div class="sec-eyebrow">Find me online</div>
+      <h2 class="sec-title">Connect & Follow</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="social-grid">
+      <a href="https://linkedin.com/in/darshan-sutagatti-201108269" target="_blank" rel="noopener"
+         class="soc-card rv" style="--sc:#0a66c2">
+        <div class="soc-icon">💼</div>
+        <div><div class="soc-name">LinkedIn</div><div class="soc-handle">darshan-sutagatti-201108269</div></div>
+        <div class="soc-btn">Connect →</div>
+      </a>
+      <a href="https://github.com/Darshan-Sutagatti" target="_blank" rel="noopener"
+         class="soc-card rv" style="--sc:#e2e8f0">
+        <div class="soc-icon">🐙</div>
+        <div><div class="soc-name">GitHub</div><div class="soc-handle">Darshan-Sutagatti</div></div>
+        <div class="soc-btn">View Code →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT (no form — info + direct actions) ══ -->
 <section id="contact">
-  <div class="contact-eyebrow reveal">Let's Build Together</div>
-  <h2 class="contact-headline reveal">Get In <em>Touch</em></h2>
-  <p class="contact-sub reveal">Open to software engineering roles, internships, and exciting collaborations. Let's talk.</p>
-  <div class="contact-grid reveal">
-    <a href="mailto:sutagattidarshan2135@gmail.com" class="contact-card">
-      <div class="c-icon">✉</div>
-      <span class="c-label">Email</span>
-      <span class="c-val">sutagattidarshan2135@gmail.com</span>
-    </a>
-    <a href="tel:+919741645875" class="contact-card">
-      <div class="c-icon">☏</div>
-      <span class="c-label">Phone</span>
-      <span class="c-val">+91 97416 45875</span>
-    </a>
-    <a href="https://linkedin.com/in/darshan-sutagatti-201108269" target="_blank" class="contact-card">
-      <div class="c-icon" style="font-family:'Clash Display',sans-serif;font-size:.9rem;font-weight:700;">in</div>
-      <span class="c-label">LinkedIn</span>
-      <span class="c-val">darshan-sutagatti</span>
-    </a>
-    <a href="https://youtube.com/@dasharides" target="_blank" class="contact-card">
-      <div class="c-icon">▶</div>
-      <span class="c-label">YouTube</span>
-      <span class="c-val">@dasharides</span>
-    </a>
-    <a href="https://instagram.com/darshan_sutagatti_" target="_blank" class="contact-card">
-      <div class="c-icon">◈</div>
-      <span class="c-label">Instagram</span>
-      <span class="c-val">@darshan_sutagatti_</span>
-    </a>
+  <div class="container contact-wrap">
+    <div class="rv">
+      <div class="sec-eyebrow" style="justify-content:center">Let's talk</div>
+      <h2 class="sec-title">Get In Touch</h2>
+      <div class="sec-line" style="margin-left:auto;margin-right:auto"></div>
+      <div class="contact-intro">
+        <p>Open to <strong style="color:var(--text)">Software Engineer</strong> and <strong style="color:var(--text)">Java Developer</strong> roles. Whether it's a full-time position, internship extension, or a project collaboration — I'd love to hear from you.</p>
+      </div>
+    </div>
+    <div class="cinfo-grid rv">
+      <div class="ci"><div class="ci-ico">📧</div><div><div class="ci-label">Email</div><div class="ci-val">sutagattidarshan2135@gmail.com</div></div></div>
+      <div class="ci"><div class="ci-ico">📞</div><div><div class="ci-label">Phone</div><div class="ci-val">+91 97416 45875</div></div></div>
+      <div class="ci"><div class="ci-ico">📍</div><div><div class="ci-label">Location</div><div class="ci-val">Bailhongal, Karnataka, India</div></div></div>
+      <div class="ci"><div class="ci-ico">🎓</div><div><div class="ci-label">Education</div><div class="ci-val">B.E. ECE · Jain College of Engineering, Belagavi</div></div></div>
+    </div>
+    <div class="contact-cta rv">
+      <a href="tel:+919741645875" class="btn-primary">Call Me 📞</a>
+      <a href="https://linkedin.com/in/darshan-sutagatti-201108269" target="_blank" rel="noopener" class="btn-ghost">LinkedIn →</a>
+      <a href="Darshan_Sutagatti_Resume.pdf" download class="btn-ghost">Download Resume ⬇</a>
+    </div>
   </div>
-  <a href="#" class="btn-main reveal" style="margin:0 auto;display:inline-flex;" onclick="dlResume(event)">Download Resume ↓</a>
-  <div class="footer-line">© 2026 Darshan Sutagatti &nbsp;·&nbsp; Software Developer &nbsp;·&nbsp; Bailhongal, Karnataka</div>
 </section>
-<script src="script.js"></script>
 
+<!-- Footer -->
+<footer>
+  <div class="foot-left">Built by <span>Darshan Sutagatti</span> · Java Full Stack Developer · Belagavi, Karnataka &nbsp;·&nbsp; © 2026</div>
+  <div class="foot-links">
+    <a href="https://linkedin.com/in/darshan-sutagatti-201108269" target="_blank">LinkedIn</a>
+    <a href="https://github.com/Darshan-Sutagatti" target="_blank">GitHub</a>
+    <a href="mailto:sutagattidarshan2135@gmail.com">Email</a>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button id="btt" aria-label="Back to top">↑</button>
+
+<script src="script.js"></script>
 </body>
 </html>
